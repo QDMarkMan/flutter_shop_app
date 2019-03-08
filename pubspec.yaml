@@ -60,6 +60,12 @@ flutter:
    - images/cats/009.png
    - images/cats/010.png
    - images/cats/011.png
+   - images/products/pro01.jpg
+   - images/products/pro02.png
+   - images/products/pro03.png
+   - images/products/pro04.png
+   - images/products/pro05.png
+   - images/products/pro06.jpg
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

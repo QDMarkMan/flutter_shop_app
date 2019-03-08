@@ -5,7 +5,7 @@
  * @Description: 主页
  * @youWant: add you want info here
  * @Date: 2019-03-07 10:08:16
- * @LastEditTime: 2019-03-07 13:44:08
+ * @LastEditTime: 2019-03-08 14:26:20
  */
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -13,12 +13,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:shop_app/widgets/nav_drawer.dart';
 import 'package:shop_app/widgets/home_swiper.dart';
 import 'package:shop_app/widgets/home_category.dart';
-
+import 'package:shop_app/widgets/home_products.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0.1,
         title: Text('ShopApp'),
         backgroundColor: Colors.red,
         //右侧工具栏
@@ -49,7 +50,17 @@ class HomePage extends StatelessWidget {
             child: Text('Categories', style: TextStyle(),)
           ),
           // 横向listview
-          HomeCategorys()
+          HomeCategorys(),
+          // title
+          Padding(
+            padding: EdgeInsets.all(8),
+            child: Text('Recent Products', style: TextStyle(),)
+          ),
+          Container(
+            height: 320,
+            child: HomeProducts(),
+          )
+          // 最新产品
         ],
       ),
     );
