@@ -5,7 +5,7 @@
  * @Description: 最新产品展示
  * @youWant: add you want info here
  * @Date: 2019-03-08 09:57:27
- * @LastEditTime: 2019-03-08 14:50:53
+ * @LastEditTime: 2019-03-11 11:27:46
  */
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -57,7 +57,8 @@ class _HomeProductsState extends State<HomeProducts> {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      itemCount: 2,
+      // GridView中渲染子widget的总数
+      itemCount: productList.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         crossAxisSpacing: 5,
@@ -110,16 +111,24 @@ class Product extends StatelessWidget {
                   )
                 );
               },
+              // 图片层
               child: GridTile(
                 child: Image.asset(pictrue, fit: BoxFit.cover,),
                 // 底部遮罩
                 footer: Container(
-                  color: Colors.white,
-                  child: ListTile(
-                    leading: Text(productName, style: TextStyle(fontWeight: FontWeight.bold),),
-                    title: Text("\$$price", style: TextStyle(color: Colors.red, fontWeight: FontWeight.w800),),
-                    subtitle: Text("\$$oldPrice", style: TextStyle(fontWeight: FontWeight.w800, decoration: TextDecoration.lineThrough)),
-                  ),
+                  color: Colors.white70,
+                  // 更新价格信息样式
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 5, right: 5),
+                    child: Row(
+                      children: <Widget>[
+                        Expanded(
+                          child: Text(productName, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
+                        ),
+                        Text("\$$price", style: TextStyle(color: Colors.red, fontWeight: FontWeight.w700),)
+                      ],
+                    ),
+                  )
                 ),
               ),
             ),

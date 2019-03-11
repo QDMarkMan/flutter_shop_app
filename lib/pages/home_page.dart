@@ -5,7 +5,7 @@
  * @Description: 主页
  * @youWant: add you want info here
  * @Date: 2019-03-07 10:08:16
- * @LastEditTime: 2019-03-08 14:26:20
+ * @LastEditTime: 2019-03-11 11:05:32
  */
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -21,7 +21,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         elevation: 0.1,
         title: Text('ShopApp'),
-        backgroundColor: Colors.red,
+        backgroundColor: Theme.of(context).primaryColor,
         //右侧工具栏
         actions: <Widget>[
           IconButton(

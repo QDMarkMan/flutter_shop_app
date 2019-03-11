@@ -5,7 +5,7 @@
  * @Description: 首页轮播图
  * @youWant: add you want info here
  * @Date: 2019-03-07 11:20:17
- * @LastEditTime: 2019-03-07 11:49:56
+ * @LastEditTime: 2019-03-11 11:26:47
  */
 import 'package:flutter/material.dart';
 
@@ -33,7 +33,7 @@ class HomeSwiper extends StatelessWidget {
           dotSpacing: 15.0,
           dotColor: Theme.of(context).primaryColor,
           indicatorBgPadding: 10,
-          dotBgColor: Colors.grey.withOpacity(0.5),
+          dotBgColor: Colors.transparent,
         )
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/pages/home_page.dart';
 
 class ProductPage extends StatefulWidget {
   
@@ -19,6 +20,8 @@ class ProductPage extends StatefulWidget {
 
 class _ProductPageState extends State<ProductPage> {
   
+  // void _showDialog()
+
   @override
   Widget build(BuildContext context) {
     print(widget.pictrueDetail);
@@ -26,18 +29,19 @@ class _ProductPageState extends State<ProductPage> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0.1,
-        title: Text('ShopApp'),
-        backgroundColor: Colors.red,
+        backgroundColor: Theme.of(context).primaryColor,
+        title: InkWell(
+          child: Text('ShopApp'),
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => new HomePage())
+            );
+          },
+        ),
         //右侧工具栏
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.search),
-            onPressed: () {
-              
-            },
-          ),
-          IconButton(
-            icon: Icon(Icons.shopping_cart),
             onPressed: () {
               
             },
@@ -73,7 +77,24 @@ class _ProductPageState extends State<ProductPage> {
               // ============== Color Button ===============
               Expanded(
                 child: MaterialButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    // 展示dialog
+                    showDialog(context: context, builder: (context) {
+                      return AlertDialog(
+                        title: Text('Color'),
+                        content: Text('Choose Color'),
+                        actions: <Widget>[
+                          MaterialButton(
+                            onPressed: () {
+                              // dialog在这里看来其实是一个页面
+                              Navigator.of(context).pop(context);
+                            },
+                            child: Text('close'),
+                          )
+                        ],
+                      );
+                    });
+                  },
                   color: Colors.white,
                   textColor: Colors.grey,
                   child: Row(
@@ -91,7 +112,9 @@ class _ProductPageState extends State<ProductPage> {
               // ============== Size Button ===============
               Expanded(
                 child: MaterialButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    
+                  },
                   color: Colors.white,
                   textColor: Colors.grey,
                   child: Row(
@@ -133,18 +156,60 @@ class _ProductPageState extends State<ProductPage> {
               Expanded(
                 child: MaterialButton(
                   onPressed: () {},
-                  color: Colors.red,
+                  color: Theme.of(context).primaryColor,
                   textColor: Colors.white,
                   child: Text('Buy now')
                 ),
               ),
               // 购物车
-              IconButton(icon: Icon(Icons.add_shopping_cart, color: Colors.red,),onPressed: (){},),
+              IconButton(icon: Icon(Icons.add_shopping_cart, color: Theme.of(context).primaryColor,),onPressed: (){},),
               // 收藏
-              IconButton(icon: Icon(Icons.favorite_border, color: Colors.red,),onPressed: (){},)
+              IconButton(icon: Icon(Icons.favorite_border, color: Theme.of(context).primaryColor,),onPressed: (){},)
             ],
-
-          )
+          ),
+          Divider(),
+          ListTile(
+            title: Text('Product details'),
+            subtitle: Text("The draft foreign investment law that has been submitted to the second session of China's top legislative body for deliberation is now a focus of public attention. China has the determination to further open up its economy, and it hopes the West can offer the same sincerity in return to open its high-tech markets, especially the 5G sector, to Chinese companies."),
+          ),
+          Divider(),
+          // 
+          Row(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.fromLTRB(15, 5, 5, 5),
+                child: Text('Product Name', style:TextStyle(color:Colors.grey)),
+              ),
+               Padding(
+                padding: EdgeInsets.all(5),
+                child: Text(widget.productDetailName),
+              )
+            ],
+          ),
+          Row(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.fromLTRB(15, 5, 5, 5),
+                child: Text('Product Brand', style:TextStyle(color:Colors.grey)),
+              ),
+              Padding(
+                padding: EdgeInsets.all(5),
+                child: Text('Brand X'),
+              )
+            ],
+          ),
+          Row(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.fromLTRB(15, 5, 5, 5),
+                child: Text('Product Condition', style:TextStyle(color:Colors.grey)),
+              ),
+              Padding(
+                padding: EdgeInsets.all(5),
+                child: Text('New'),
+              )
+            ],
+          ),
         ],
       ),
     );

@@ -25,7 +25,7 @@ class MyShopApp extends StatelessWidget {
       child: MaterialApp(
         title: 'FlutterShop',
         theme: ThemeData(
-          primaryColor: Colors.red
+          primaryColor: Colors.deepPurpleAccent
         ),
         home: HomePage(),
       ),

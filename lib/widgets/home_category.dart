@@ -5,7 +5,7 @@
  * @Description: 第一行分类
  * @youWant: add you want info here
  * @Date: 2019-03-07 11:51:26
- * @LastEditTime: 2019-03-07 14:30:40
+ * @LastEditTime: 2019-03-11 11:33:54
  */
 
 import 'package:flutter/material.dart';
@@ -26,7 +26,6 @@ class HomeCategorys extends StatelessWidget {
         Category(imageLocation: cat.location, imageCaption: cat.caption,)
       );
     });
-    print(_temp);
     return _temp;
   }
   @override
@@ -61,10 +60,11 @@ class Category extends StatelessWidget {
       padding: EdgeInsets.all(5),      
       child: InkWell(
         onTap: () {},
+        // 分类图标
         child: Container(
             width: 100,
             child: ListTile(
-              title: Image.asset(imageLocation, width: 100,height: 60,),
+              title: Image.asset(imageLocation, width: 100,height: 50,),
               subtitle: Text(imageCaption, textAlign: TextAlign.center,),
             ),
         ),

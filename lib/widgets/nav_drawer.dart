@@ -17,7 +17,7 @@ class NavDrawer extends StatelessWidget {
                 child: Icon(Icons.person, color: Colors.grey),
               ),
             ),
-            decoration: BoxDecoration(color: Colors.red),
+            decoration: BoxDecoration(color: Theme.of(context).primaryColor),
           ),
           // InkWell 水波纹效果
           InkWell(
@@ -27,19 +27,19 @@ class NavDrawer extends StatelessWidget {
             },
           ),
           InkWell(
-            child: ListTile(title: Text('Account'), leading: Icon(Icons.person)),
+            child: ListTile(title: Text('Account'), leading: Icon(Icons.person, color: Theme.of(context).primaryColor,)),
             onTap: () {
               
             },
           ),
           InkWell(
-            child: ListTile(title: Text('Orders'), leading: Icon(Icons.shopping_basket)),
+            child: ListTile(title: Text('Orders'), leading: Icon(Icons.shopping_basket, color: Theme.of(context).primaryColor,)),
             onTap: () {
               
             },
           ),
           InkWell(
-            child: ListTile(title: Text('Found'), leading: Icon(Icons.dashboard)),
+            child: ListTile(title: Text('ShopptingCart'), leading: Icon(Icons.shopping_cart, color: Theme.of(context).primaryColor,)),
             onTap: () {
               
             },
