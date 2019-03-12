@@ -1,21 +1,13 @@
-/*
- * @Author: etongfu
- * @Email: 13583254085@163.com
- * @LastEditors: etongfu
- * @Description: 最新产品展示
- * @youWant: add you want info here
- * @Date: 2019-03-08 09:57:27
- * @LastEditTime: 2019-03-12 09:47:44
- */
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:shop_app/widgets/single_product.dart';
 
-
-class HomeProducts extends StatefulWidget {
-  _HomeProductsState createState() => _HomeProductsState();
+// 相似商品组件
+class SimilarProduct extends StatefulWidget {
+  @override
+  _SimilarProductState createState() => _SimilarProductState();
 }
-class _HomeProductsState extends State<HomeProducts> {
+
+class _SimilarProductState extends State<SimilarProduct> {
   var productList = [
     {
       "productName": "name1",
@@ -54,6 +46,7 @@ class _HomeProductsState extends State<HomeProducts> {
       "price": "29.99"
     }
   ];
+
   @override
   Widget build(BuildContext context) {
     return GridView.builder(

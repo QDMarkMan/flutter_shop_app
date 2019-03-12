@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
+import 'package:shop_app/pages/shopping_cart.dart';
+
+
 class NavDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _iconColor = Theme.of(context).primaryColor;
+
+    // 跳转页面
+    void _jumpPage (Widget widget) {
+     Navigator.of(context).push(
+       CupertinoPageRoute(builder: (context) => widget)
+     );
+    }
+
     return Drawer(
       child: ListView(
         children: <Widget>[
@@ -35,13 +46,13 @@ class NavDrawer extends StatelessWidget {
           InkWell(
             child: ListTile(title: Text('Orders'), leading: Icon(Icons.shopping_basket, color: Theme.of(context).primaryColor,)),
             onTap: () {
-              
+
             },
           ),
           InkWell(
-            child: ListTile(title: Text('ShopptingCart'), leading: Icon(Icons.shopping_cart, color: Theme.of(context).primaryColor,)),
+            child: ListTile(title: Text('ShoppingCart'), leading: Icon(Icons.shopping_cart, color: Theme.of(context).primaryColor,)),
             onTap: () {
-              
+              _jumpPage(ShoppingCart());
             },
           ),
           Padding(

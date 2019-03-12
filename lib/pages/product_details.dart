@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/pages/home_page.dart';
+import 'package:shop_app/widgets/similar_products.dart';
 
 class ProductPage extends StatefulWidget {
   
@@ -210,6 +211,14 @@ class _ProductPageState extends State<ProductPage> {
               )
             ],
           ),
+          ListTile(
+            title: Text('Similar products'),
+          ),
+          // 相似商品
+          Container(
+            height: 360,
+            child: SimilarProduct(),
+          )
         ],
       ),
     );
