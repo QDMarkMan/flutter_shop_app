@@ -17,7 +17,23 @@ class _CartProductsState extends State<CartProducts> {
     },
     {
       "productName": "Pets",
+      "pictrue": "images/products/pro04.png",
+      "oldPrice": 1,
+      "price": "29.99",
+      "size": "L",
+      "color": "red"
+    },
+    {
+      "productName": "Pets",
       "pictrue": "images/products/pro06.jpg",
+      "oldPrice": 1,
+      "price": "29.99",
+      "size": "L",
+      "color": "red"
+    },
+    {
+      "productName": "Pets",
+      "pictrue": "images/products/pro02.png",
       "oldPrice": 1,
       "price": "29.99",
       "size": "L",
@@ -81,7 +97,7 @@ class ProductInCart extends StatelessWidget {
                 ),
                 // =========== color =========
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 8, 8, 8),
+                  padding: const EdgeInsets.fromLTRB(20, 0, 8, 8),
                   child: Text('Color:'),
                 ),
                 Padding (
@@ -106,5 +122,9 @@ class ProductInCart extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void addProduct() {
+
   }
 }

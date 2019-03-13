@@ -6,7 +6,7 @@ import 'dart:io';
 // import 'package:flutter/rendering.dart';
 // index 页面
 // import './widgets/bottom_nav.dart';
-import 'package:shop_app/pages/home_page.dart';
+import 'package:shop_app/pages/login_page.dart';
 
 void main() {
   if (Platform.isAndroid) {
@@ -27,7 +27,7 @@ class MyShopApp extends StatelessWidget {
         theme: ThemeData(
           primaryColor: Colors.deepPurpleAccent
         ),
-        home: HomePage(),
+        home: LoginPage(),
       ),
     );
   }

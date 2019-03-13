@@ -31,7 +31,7 @@ class HomeCategorys extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
+      height: 50,
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: _setCats(),
@@ -62,10 +62,10 @@ class Category extends StatelessWidget {
         onTap: () {},
         // 分类图标
         child: Container(
-            width: 100,
+            width: 80,
             child: ListTile(
-              title: Image.asset(imageLocation, width: 100,height: 50,),
-              subtitle: Text(imageCaption, textAlign: TextAlign.center,),
+              title: Image.asset(imageLocation, width: 40,height: 40,),
+//              subtitle: Text(imageCaption, textAlign: TextAlign.center,),
             ),
         ),
       ),
