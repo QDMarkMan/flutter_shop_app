@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:shop_app/pages/shopping_cart.dart';
-
+import 'package:shop_app/pages/login_page.dart';
 
 class NavDrawer extends StatelessWidget {
   @override
@@ -69,6 +69,14 @@ class NavDrawer extends StatelessWidget {
             child: ListTile(title: Text('Question'), leading: Icon(Icons.help, color: Colors.green,)),
             onTap: () {
               
+            },
+          ),
+          InkWell(
+            child: ListTile(title: Text('Logout'), leading: Icon(Icons.power_settings_new, color: Colors.red,)),
+            onTap: () {
+              Navigator.pushReplacement(context, MaterialPageRoute(
+                builder: (context) => LoginPage()
+              ));
             },
           ),
         ],
