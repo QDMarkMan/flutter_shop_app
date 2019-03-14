@@ -44,7 +44,14 @@ class _LoginPageState extends State<LoginPage> {
 
     return Scaffold(
         body: Container(
-            color: Theme.of(context).primaryColor,
+            decoration: BoxDecoration(
+              // color: Theme.of(context).primaryColor,
+              // 使用背景图
+              image: DecorationImage(
+                fit: BoxFit.fill,
+                image: new Image.asset('images/bg.jpg').image,
+              )
+            ),
             height: double.infinity, // 高度100%
             child: SingleChildScrollView(
               child: Center(
