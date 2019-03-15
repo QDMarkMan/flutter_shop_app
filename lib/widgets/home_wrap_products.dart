@@ -5,11 +5,11 @@
  * @Description: 最新产品展示
  * @youWant: add you want info here
  * @Date: 2019-03-08 09:57:27
- * @LastEditTime: 2019-03-15 13:51:04
+ * @LastEditTime: 2019-03-15 13:58:01
  */
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:shop_app/widgets/single_product.dart';
+// import 'package:shop_app/widgets/single_product.dart';
 import 'dart:ui';
 
 class HomeWrapProducts extends StatefulWidget {
