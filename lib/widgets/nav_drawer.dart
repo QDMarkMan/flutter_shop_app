@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:shop_app/pages/shopping_cart.dart';
 import 'package:shop_app/pages/login_page.dart';
@@ -73,7 +74,10 @@ class NavDrawer extends StatelessWidget {
           ),
           InkWell(
             child: ListTile(title: Text('Logout'), leading: Icon(Icons.power_settings_new, color: Colors.red,)),
-            onTap: () {
+            onTap: () async {
+              SharedPreferences _shared = await SharedPreferences.getInstance();
+              //　清除登陆痕迹
+              _shared.setString('userId', null);
               Navigator.pushReplacement(context, MaterialPageRoute(
                 builder: (context) => LoginPage()
               ));

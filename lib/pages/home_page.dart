@@ -5,7 +5,7 @@
  * @Description: 主页
  * @youWant: add you want info here
  * @Date: 2019-03-07 10:08:16
- * @LastEditTime: 2019-03-11 11:05:32
+ * @LastEditTime: 2019-03-15 11:35:55
  */
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -14,6 +14,7 @@ import 'package:shop_app/widgets/nav_drawer.dart';
 import 'package:shop_app/widgets/home_swiper.dart';
 import 'package:shop_app/widgets/home_category.dart';
 import 'package:shop_app/widgets/home_products.dart';
+import 'package:shop_app/widgets/home_wrap_products.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -56,10 +57,11 @@ class HomePage extends StatelessWidget {
             padding: EdgeInsets.all(8),
             child: Text('Recent Products', style: TextStyle(),)
           ),
-          Container(
+          /* Container(
             height: 320,
             child: HomeProducts(),
-          )
+          ) */
+          HomeWrapProducts(),
           // 最新产品
         ],
       ),

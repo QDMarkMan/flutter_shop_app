@@ -5,7 +5,7 @@
  * @Description: 单个产品页面
  * @youWant: add you want info here
  * @Date: 2019-03-12 09:47:01
- * @LastEditTime: 2019-03-12 09:50:29
+ * @LastEditTime: 2019-03-15 10:53:39
  */
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';

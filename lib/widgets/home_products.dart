@@ -5,7 +5,7 @@
  * @Description: 最新产品展示
  * @youWant: add you want info here
  * @Date: 2019-03-08 09:57:27
- * @LastEditTime: 2019-03-12 09:47:44
+ * @LastEditTime: 2019-03-15 11:31:34
  */
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -54,8 +54,30 @@ class _HomeProductsState extends State<HomeProducts> {
       "price": "29.99"
     }
   ];
+  // 构建list
+  Widget _listWidget() {
+    if (productList.length != 0) {
+      List<Widget> listWidget = productList.map((item) {
+        return Product(
+          productName: item['productName'],
+          pictrue: item['pictrue'],
+          oldPrice: item['oldPrice'],
+          price: item['price'],
+        );
+      }).toList();
+      return Wrap(
+        spacing: 2,
+        children: listWidget,
+      );
+    } else {
+      return Text('暂无相关商品');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    // _listWidget();
+
     return GridView.builder(
       // GridView中渲染子widget的总数
       itemCount: productList.length,

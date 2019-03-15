@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// 和Android、Ios类似，Flutter也支持Preferences（Shared Preferences and NSUserDefaults） 、文件、和Sqlite3。
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shop_app/utils/toast.dart';
 import 'home_page.dart';
@@ -12,7 +13,9 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   SharedPreferences preferences;
   bool loading = false;
-  bool isLogin = false;
+  String username;
+  String userId;
+  Future<String> _id;
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _passController = TextEditingController();
 
@@ -30,12 +33,29 @@ class _LoginPageState extends State<LoginPage> {
     });
 
     preferences = await SharedPreferences.getInstance();
-    // 已经登陆的情况下
-    if (isLogin) {
-      // 跳转并替换当前路由
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => HomePage()));
-    }
+    // Future 异步对象
+    _id = _getUserId();
+    _id.then((String value) {
+      print(value);
+      userId =value;
+      // 已经登陆的情况下
+      if (userId != null) {
+        // 跳转并替换当前路由
+        Navigator.pushReplacement( context, MaterialPageRoute(builder: (context) => HomePage())); }
+    });
+  }
+  /// @param username
+  _saveUserInfo (String name, String pass) {
+
+    preferences.setString("username", name);
+    preferences.setString("userId", name+pass);
+  }
+  /// 获取用户信息
+  Future<String> _getUserId () async{
+    var _temp;
+    _temp = preferences.getString("userId");
+    print("获取到的userId$_temp");
+    return _temp;
   }
 
   @override
@@ -128,6 +148,9 @@ class _LoginPageState extends State<LoginPage> {
                         }
                         // 模拟登陆
                         if (userName == '123' && password == '123456') {
+                          // 保存登陆用户信息
+                          _saveUserInfo(userName, password);
+                          // 跳转页面
                           Navigator.pushReplacement(context, MaterialPageRoute(
                             builder: (context) => HomePage()
                           ));
