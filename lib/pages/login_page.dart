@@ -51,6 +51,7 @@ class _LoginPageState extends State<LoginPage> {
     preferences.setString("userId", name+pass);
   }
   /// 获取用户信息
+  /// 用户信息的判断， 如果是要求用户强制登陆的话那么一定要在main.dart去做判断。这样有比较好的体验
   Future<String> _getUserId () async{
     var _temp;
     _temp = preferences.getString("userId");

@@ -5,7 +5,7 @@
  * @Description: 首页轮播图
  * @youWant: add you want info here
  * @Date: 2019-03-07 11:20:17
- * @LastEditTime: 2019-03-11 11:26:47
+ * @LastEditTime: 2019-03-19 10:48:09
  */
 import 'package:flutter/material.dart';
 
@@ -26,7 +26,7 @@ class HomeSwiper extends StatelessWidget {
             ExactAssetImage("images/02.png"),
             ExactAssetImage("images/03.png")
           ],
-          autoplay: true,
+          autoplay: false,
           animationCurve: Curves.fastOutSlowIn,
           animationDuration: Duration(milliseconds: 1000),
           dotSize: 4.0,
