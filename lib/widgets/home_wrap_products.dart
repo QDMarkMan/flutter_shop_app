@@ -5,10 +5,12 @@
  * @Description: 最新产品展示
  * @youWant: add you want info here
  * @Date: 2019-03-08 09:57:27
- * @LastEditTime: 2019-03-15 13:58:01
+ * @LastEditTime: 2019-03-20 11:14:25
  */
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:shop_app/api/home_api.dart';
+import 'package:dio/dio.dart';
 // import 'package:shop_app/widgets/single_product.dart';
 import 'dart:ui';
 
@@ -17,6 +19,16 @@ class HomeWrapProducts extends StatefulWidget {
 }
 
 class _HomeWrapProductsState extends State<HomeWrapProducts> {
+  List<dynamic> products =List();
+
+  void getList () async{
+    Response response =await getHomeList();
+    setState(() {
+      print("开始执行修改state");
+      products =  response.data["feedList"];
+    });
+
+  }
   var productList = [
     {
       "productName": "name1",
@@ -65,21 +77,17 @@ class _HomeWrapProductsState extends State<HomeWrapProducts> {
   Widget _listWidget() {
     final Size _screenSize = MediaQuery.of(context).size;
     if (productList.length != 0) {
-      List<Widget> listWidget = productList.map((item) {
-        print(item);
+      List<Widget> listWidget = products.map((item) {
         return Container(
             height: _screenSize.height / 3.5,
             width: _screenSize.width / 2,
             child: Card(
               child: Hero(
-                tag: item["productName"],
+                tag: item["title"],
                 child: InkWell(
                   onTap: () {},
                   child: GridTile(
-                    child: Image.asset(
-                      item["pictrue"],
-                      fit: BoxFit.cover,
-                    ),
+                    child: Image.network(item["url"]),
                     footer: Container(
                         color: Colors.white70,
                         child: Padding(
@@ -87,9 +95,9 @@ class _HomeWrapProductsState extends State<HomeWrapProducts> {
                           child: Row(
                             children: <Widget>[
                               Expanded(
-                                child: Text( item["productName"], style: TextStyle( fontWeight: FontWeight.bold, fontSize: 16), ),
+                                child: Text( item["title"], style: TextStyle( fontWeight: FontWeight.bold, fontSize: 16), ),
                               ),
-                              Text( "\$${item['price']},", style: TextStyle( color: Colors.red, fontWeight: FontWeight.w700),
+                              Text( "\$${item['favorites']},", style: TextStyle( color: Colors.red, fontWeight: FontWeight.w700),
                               )
                             ],
                           ),

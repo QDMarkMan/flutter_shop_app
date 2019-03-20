@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'dart:io';
-import 'package:shop_app/api/home_api.dart';
-
 // import 'package:flutter/rendering.dart';
 // index 页面
 // import './widgets/bottom_nav.dart';
@@ -22,7 +20,6 @@ void main() async {
 class MyShopApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    getListDemo();
     return Container(
       child: MaterialApp(
         title: 'FlutterShop',

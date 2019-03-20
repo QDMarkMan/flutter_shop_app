@@ -2,13 +2,15 @@
  * @Author: etongfu
  * @Email: 13583254085@163.com
  * @LastEditors: etongfu
- * @Description: make dio as global top-level variable
+ * @Description: 封装Http utils
  * @youWant: add you want info here
- * @Date: 2019-03-19 10:04:21
- * @LastEditTime: 2019-03-20 11:08:04
+ * @Date: 2019-03-20 10:26:41
+ * @LastEditTime: 2019-03-20 10:45:42
  */
-import 'package:dio/dio.dart';
+import "package:dio/dio.dart";
+import 'dart:async';
 import 'dart:io';
+
 final fixedParam = {
       "abflag": "0",
       "ac": "wifi",
@@ -32,7 +34,7 @@ Options requestInterceptor (RequestOptions options) {
   if (options.method == "GET") {
     options.queryParameters = fixedParam;
   }
-  // print(options.queryParameters);
+  print(options.queryParameters);
   // 在请求被发送之前做一些事情
   return options; //continue
   // 如果你想完成请求并返回一些自定义数据，可以返回一个`Response`对象或返回`dio.resolve(data)`。
@@ -73,34 +75,70 @@ class DioTransformer extends DefaultTransformer {
   }
 }
 
-/// 生成dio对象
-Dio getDioInstance () {
-  var _dioInstance = new Dio(
-    BaseOptions(
-      baseUrl:  "https://api.tuchong.com/",
-      connectTimeout: 5000,
-      receiveTimeout: 100000,
-      headers: {
-        HttpHeaders.userAgentHeader: 'dio',
-        "api": "1.0.1",
-        "uuid": ""
-      },
-      contentType: ContentType.json,
-      // 返回数据格式
-      responseType: ResponseType.json
-    )
-  );
-  // 转化器
-  _dioInstance.transformer = DioTransformer();
-  // 添加拦截器
-  _dioInstance.interceptors
-  // 日志打印拦截器
-  ..add(LogInterceptor(responseBody: false))
-  // 自定义拦截器
-  ..add(InterceptorsWrapper(
-    onRequest: requestInterceptor,
-    onResponse: responseInterceptor,
-    onError: errorInterceptor
-  ));
-  return _dioInstance;
+class HttpUtil {
+  
+  Dio _client;
+
+  HttpUtil._internal(){
+    if (_client == null) {
+      _client = _initDio();
+    }
+  }
+  /// 初始化dio
+  Dio _initDio () {
+    var _dioInstance = new Dio(
+      BaseOptions(
+        baseUrl:  "https://api.tuchong.com/",
+        connectTimeout: 5000,
+        receiveTimeout: 100000,
+        headers: {
+          HttpHeaders.userAgentHeader: 'dio',
+          "api": "1.0.1",
+          "uuid": ""
+        },
+        contentType: ContentType.json,
+        // 返回数据格式
+        responseType: ResponseType.json
+      )
+    );
+    // 转化器
+    _dioInstance.transformer = DioTransformer();
+    // 添加拦截器
+    _dioInstance.interceptors
+    // 日志打印拦截器
+    ..add(LogInterceptor(responseBody: false))
+    // 自定义拦截器
+    ..add(InterceptorsWrapper(
+      onRequest: requestInterceptor,
+      onResponse: responseInterceptor,
+      onError: errorInterceptor
+    ));
+
+    return _dioInstance;
+  }
+  /// get 请求
+  /// @param path 请求地址
+  /// @param Map<String, dynamic> params  请求参数
+  Future<Map<String, dynamic>> get(String path, [Map<String, dynamic> params]) async {
+    Response<Map<String, dynamic>> response;
+    if (params !=null) {
+      response = await _client.get(path, queryParameters: params);
+    } else {
+      response = await _client.get(path);
+    }
+    return response.data;
+  }
+  /// post 请求
+  /// @param path 请求地址
+  /// @param Map<String, dynamic> params  请求参数
+  Future<Map<String, dynamic>> post(String path,  [Map<String, dynamic> data]) async {
+    Response<Map<String, dynamic>> response;
+    if (data != null) {
+      response =await _client.post(path,data:data);
+    } else {
+      response =await _client.post(path);
+    }
+    return response.data;
+  }
+
 }
