@@ -4,6 +4,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shop_app/utils/toast.dart';
 import 'home_page.dart';
 import 'dart:ui';
+import 'package:shop_app/widgets/loading_wrap.dart';
+
 
 class LoginPage extends StatefulWidget {
   @override
@@ -46,7 +48,6 @@ class _LoginPageState extends State<LoginPage> {
   }
   /// @param username
   _saveUserInfo (String name, String pass) {
-
     preferences.setString("username", name);
     preferences.setString("userId", name+pass);
   }
@@ -64,7 +65,7 @@ class _LoginPageState extends State<LoginPage> {
     final Size _screenSize = MediaQuery.of(context).size;
 
     return Scaffold(
-        body: Container(
+      body: Container(
             decoration: BoxDecoration(
               // color: Theme.of(context).primaryColor,
               // 使用背景图
@@ -151,10 +152,11 @@ class _LoginPageState extends State<LoginPage> {
                         if (userName == '123' && password == '123456') {
                           // 保存登陆用户信息
                           _saveUserInfo(userName, password);
+                          
                           // 跳转页面
-                          Navigator.pushReplacement(context, MaterialPageRoute(
+                          /* Navigator.pushReplacement(context, MaterialPageRoute(
                             builder: (context) => HomePage()
-                          ));
+                          )); */
                         } else {
                           return ToastHelp(msg: '用户名或密码错误').errorToast();
                         }
@@ -194,6 +196,7 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
               ),
-            )));
+            )),
+    );
   }
 }

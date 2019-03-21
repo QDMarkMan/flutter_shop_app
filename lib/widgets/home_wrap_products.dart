@@ -5,7 +5,7 @@
  * @Description: 最新产品展示
  * @youWant: add you want info here
  * @Date: 2019-03-08 09:57:27
- * @LastEditTime: 2019-03-20 11:14:25
+ * @LastEditTime: 2019-03-21 11:13:56
  */
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -23,11 +23,21 @@ class _HomeWrapProductsState extends State<HomeWrapProducts> {
 
   void getList () async{
     Response response =await getHomeList();
+    products =  response.data["feedList"];
     setState(() {
-      print("开始执行修改state");
+      print("修改产品列表");
       products =  response.data["feedList"];
     });
 
+  }
+  
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    // 获取产品列表
+    getList();
   }
   var productList = [
     {

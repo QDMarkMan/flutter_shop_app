@@ -5,7 +5,7 @@
  * @Description: make dio as global top-level variable
  * @youWant: add you want info here
  * @Date: 2019-03-19 10:04:21
- * @LastEditTime: 2019-03-20 11:08:04
+ * @LastEditTime: 2019-03-21 11:16:13
  */
 import 'package:dio/dio.dart';
 import 'dart:io';
@@ -32,6 +32,7 @@ Options requestInterceptor (RequestOptions options) {
   if (options.method == "GET") {
     options.queryParameters = fixedParam;
   }
+  print("Http request ${options.uri}");
   // print(options.queryParameters);
   // 在请求被发送之前做一些事情
   return options; //continue
