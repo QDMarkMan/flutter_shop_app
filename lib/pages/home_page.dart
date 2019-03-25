@@ -5,7 +5,7 @@
  * @Description: 主页
  * @youWant: add you want info here
  * @Date: 2019-03-07 10:08:16
- * @LastEditTime: 2019-03-15 11:35:55
+ * @LastEditTime: 2019-03-25 11:33:50
  */
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -13,8 +13,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:shop_app/widgets/nav_drawer.dart';
 import 'package:shop_app/widgets/home_swiper.dart';
 import 'package:shop_app/widgets/home_category.dart';
-import 'package:shop_app/widgets/home_products.dart';
+// import 'package:shop_app/widgets/home_products.dart';
 import 'package:shop_app/widgets/home_wrap_products.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -62,6 +64,8 @@ class HomePage extends StatelessWidget {
             child: HomeProducts(),
           ) */
           HomeWrapProducts(),
+          // loading状态
+          SpinKitWave(color: Theme.of(context).primaryColor, type: SpinKitWaveType.start, size: 36,),
           // 最新产品
         ],
       ),

@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shop_app/utils/toast.dart';
 import 'home_page.dart';
 import 'dart:ui';
-import 'package:shop_app/widgets/loading_wrap.dart';
+// import 'package:shop_app/widgets/Loading.dart';
 
 
 class LoginPage extends StatefulWidget {
@@ -79,6 +79,8 @@ class _LoginPageState extends State<LoginPage> {
               child: Center(
                 child: Column(
                   children: <Widget>[
+                    // 加载状态
+                    // Loading(),
                     // 图标
                     Padding(
                       padding: EdgeInsets.only(top: 60),
@@ -152,7 +154,6 @@ class _LoginPageState extends State<LoginPage> {
                         if (userName == '123' && password == '123456') {
                           // 保存登陆用户信息
                           _saveUserInfo(userName, password);
-                          
                           // 跳转页面
                           /* Navigator.pushReplacement(context, MaterialPageRoute(
                             builder: (context) => HomePage()
