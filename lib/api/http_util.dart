@@ -5,30 +5,29 @@
  * @Description: 封装Http utils
  * @youWant: add you want info here
  * @Date: 2019-03-20 10:26:41
- * @LastEditTime: 2019-03-20 10:45:42
+ * @LastEditTime: 2019-03-26 13:50:13
  */
 import "package:dio/dio.dart";
 import 'dart:async';
 import 'dart:io';
 
-final fixedParam = {
-      "abflag": "0",
-      "ac": "wifi",
-      "aid": "0",
-      "app_name": "tuchong",
-      "device_platform": "android",
-      "device_type": "MI",
-      "dpi": "400",
-      "manifest_version_code": "232",
-      "openudid": "65143269dafd1f3a5",
-      "os_api": "22",
-      "os_version": "5.8.1",
-      "resolution": "1280*1000",
-      "ssmix": "a",
-      "uuid": "651384659521356",
-      "version_code": "232",
-      "version_name": "2.3.2"
-    };
+class ReturnObject {
+  final String message;
+  final bool success;
+  final num code;
+  final Map<String, dynamic> result;
+
+  ReturnObject(this.message, this.success, this.code, this.result);
+  //序列化参数
+  ReturnObject.fromJson(Map<String, dynamic> json):
+                        message = json['message'],
+                        success = json['success'], 
+                        code = json['code'], 
+                        result = json['result'];
+
+}
+
+final fixedParam = {};
 /// 请求拦截
 Options requestInterceptor (RequestOptions options) {
   if (options.method == "GET") {
@@ -74,10 +73,11 @@ class DioTransformer extends DefaultTransformer {
      return super.transformResponse(options, response);
   }
 }
-
 class HttpUtil {
-  
+  static final HttpUtil _instance = HttpUtil._internal();
   Dio _client;
+  // 默认构造函数
+  factory HttpUtil() => _instance;
 
   HttpUtil._internal(){
     if (_client == null) {
@@ -88,7 +88,7 @@ class HttpUtil {
   Dio _initDio () {
     var _dioInstance = new Dio(
       BaseOptions(
-        baseUrl:  "https://api.tuchong.com/",
+        baseUrl:  "http://172.16.255.196:3001/api/",
         connectTimeout: 5000,
         receiveTimeout: 100000,
         headers: {
@@ -131,14 +131,16 @@ class HttpUtil {
   /// post 请求
   /// @param path 请求地址
   /// @param Map<String, dynamic> params  请求参数
-  Future<Map<String, dynamic>> post(String path,  [Map<String, dynamic> data]) async {
-    Response<Map<String, dynamic>> response;
+  Future<ReturnObject> post(String path,  [Map<dynamic, dynamic> data]) async {
+    
+    Response<Map<dynamic, dynamic>> response;
     if (data != null) {
-      response =await _client.post(path,data:data);
+      response = await _client.post(path,data:data);
     } else {
-      response =await _client.post(path);
+      response = await _client.post(path);
     }
-    return response.data;
+    var _returnObject = ReturnObject.fromJson(response.data);
+    return _returnObject;
   }
 
 }

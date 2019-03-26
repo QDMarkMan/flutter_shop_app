@@ -5,7 +5,7 @@
  * @Description: toast 帮助文档
  * @youWant: add you want info here
  * @Date: 2019-03-14 10:25:24
- * @LastEditTime: 2019-03-14 11:02:15
+ * @LastEditTime: 2019-03-26 11:21:04
  */
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -49,6 +49,16 @@ class ToastHelp {
         fontSize: 16.0
     );
   }
-
-
+  // =========== 成功提示 ===========
+  void successToast () {
+    Fluttertoast.showToast(
+        msg: msg,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIos: 1,
+        backgroundColor: Colors.green,
+        textColor: Colors.white,
+        fontSize: 16.0
+    );
+  }
 }

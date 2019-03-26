@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shop_app/utils/toast.dart';
 import 'home_page.dart';
 import 'dart:ui';
+import 'package:shop_app/api/user_api.dart';
 // import 'package:shop_app/widgets/Loading.dart';
 
 
@@ -16,6 +17,7 @@ class _LoginPageState extends State<LoginPage> {
   SharedPreferences preferences;
   bool loading = false;
   String username;
+  String password;
   String userId;
   Future<String> _id;
   final TextEditingController _nameController = TextEditingController();
@@ -47,9 +49,8 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
   /// @param username
-  _saveUserInfo (String name, String pass) {
-    preferences.setString("username", name);
-    preferences.setString("userId", name+pass);
+  _saveUserInfo (String sessionId) {
+    preferences.setString("key", sessionId);
   }
   /// 获取用户信息
   /// 用户信息的判断， 如果是要求用户强制登陆的话那么一定要在main.dart去做判断。这样有比较好的体验
@@ -58,6 +59,12 @@ class _LoginPageState extends State<LoginPage> {
     _temp = preferences.getString("userId");
     print("获取到的userId$_temp");
     return _temp;
+  }
+  /// 登陆
+  void _login (para) async {
+    loginByUserName(para).then((data) {
+      print(data);
+    });
   }
 
   @override
@@ -151,17 +158,35 @@ class _LoginPageState extends State<LoginPage> {
                           return ToastHelp(msg: '请输入密码').errorToast();
                         }
                         // 模拟登陆
-                        if (userName == '123' && password == '123456') {
+                        /* if (userName == '123' && password == '123456') {
                           // 保存登陆用户信息
                           _saveUserInfo(userName, password);
                           // 跳转页面
-                          /* Navigator.pushReplacement(context, MaterialPageRoute(
+                          Navigator.pushReplacement(context, MaterialPageRoute(
                             builder: (context) => HomePage()
-                          )); */
+                          ));
                         } else {
                           return ToastHelp(msg: '用户名或密码错误').errorToast();
-                        }
-
+                        } */
+                        Map para = {
+                          'username': userName,
+                          'password':password
+                        };
+                        
+                        print(para);
+                        loginByUserName(para).then((data) {
+                          if (data.success) {
+                            print(data.result['sessionId']);
+                            // 设置sessionid
+                             _saveUserInfo(data.result['sessionId']);
+                            ToastHelp(msg: "登陆成功").successToast();
+                            /* Navigator.pushReplacement(context, MaterialPageRoute(
+                              builder: (context) => HomePage()
+                            )); */
+                          } else {
+                            return ToastHelp(msg: data.message).errorToast();
+                          }
+                        });
                       },
                       child: Container(
                         margin: EdgeInsets.only(top: 20),
