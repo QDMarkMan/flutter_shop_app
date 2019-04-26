@@ -46,7 +46,6 @@ class _BottomNavState extends State<BottomNav> {
         onTap: (index) {
           setState(() {
            _currentIndex = index; 
-
           });
         },
       ),

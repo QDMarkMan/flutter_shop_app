@@ -5,7 +5,7 @@
  * @Description: 主页
  * @youWant: add you want info here
  * @Date: 2019-03-07 10:08:16
- * @LastEditTime: 2019-03-25 11:33:50
+ * @LastEditTime: 2019-04-26 09:43:25
  */
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -63,7 +63,7 @@ class HomePage extends StatelessWidget {
             height: 320,
             child: HomeProducts(),
           ) */
-          HomeWrapProducts(),
+          // HomeWrapProducts(),
           // loading状态
           SpinKitWave(color: Theme.of(context).primaryColor, type: SpinKitWaveType.start, size: 36,),
           // 最新产品

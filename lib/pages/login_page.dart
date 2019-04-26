@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 // 和Android、Ios类似，Flutter也支持Preferences（Shared Preferences and NSUserDefaults） 、文件、和Sqlite3。
+import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shop_app/utils/toast.dart';
 import 'home_page.dart';
@@ -158,17 +159,17 @@ class _LoginPageState extends State<LoginPage> {
                           return ToastHelp(msg: '请输入密码').errorToast();
                         }
                         // 模拟登陆
-                        /* if (userName == '123' && password == '123456') {
+                        if (userName == '123' && password == '123456') {
                           // 保存登陆用户信息
-                          _saveUserInfo(userName, password);
+                          _saveUserInfo(userName);
                           // 跳转页面
                           Navigator.pushReplacement(context, MaterialPageRoute(
                             builder: (context) => HomePage()
                           ));
                         } else {
                           return ToastHelp(msg: '用户名或密码错误').errorToast();
-                        } */
-                        Map para = {
+                        }
+                        /* Map para = {
                           'username': userName,
                           'password':password
                         };
@@ -178,15 +179,15 @@ class _LoginPageState extends State<LoginPage> {
                           if (data.success) {
                             print(data.result['sessionId']);
                             // 设置sessionid
-                             _saveUserInfo(data.result['sessionId']);
+                            _saveUserInfo(data.result['sessionId']);
                             ToastHelp(msg: "登陆成功").successToast();
-                            /* Navigator.pushReplacement(context, MaterialPageRoute(
+                            Navigator.pushReplacement(context, MaterialPageRoute(
                               builder: (context) => HomePage()
-                            )); */
+                            ));
                           } else {
                             return ToastHelp(msg: data.message).errorToast();
                           }
-                        });
+                        }); */
                       },
                       child: Container(
                         margin: EdgeInsets.only(top: 20),

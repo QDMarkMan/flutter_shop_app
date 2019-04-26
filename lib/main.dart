@@ -5,7 +5,10 @@ import 'dart:io';
 // import 'package:flutter/rendering.dart';
 // index 页面
 // import './widgets/bottom_nav.dart';
-import 'package:shop_app/pages/login_page.dart';
+import 'package:shop_app/pages/home_page.dart';
+
+
+// import 'package:shop_app/pages/login_page.dart';
 
 void main() async {
   if (Platform.isAndroid) {
@@ -20,13 +23,14 @@ void main() async {
 class MyShopApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // FlutterAmap.setApiKey("09e4cabb5267b95bbe72a7ff598505ef");
     return Container(
       child: MaterialApp(
         title: 'FlutterShop',
         theme: ThemeData(
           primaryColor: Colors.deepPurpleAccent
         ),
-        home: LoginPage(),
+        home: HomePage(),
       ),
     );
   }

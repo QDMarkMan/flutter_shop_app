@@ -4,6 +4,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:shop_app/pages/shopping_cart.dart';
 import 'package:shop_app/pages/login_page.dart';
+import 'package:shop_app/pages/map_page.dart';
+
 
 class NavDrawer extends StatelessWidget {
   @override
@@ -12,9 +14,9 @@ class NavDrawer extends StatelessWidget {
 
     // 跳转页面
     void _jumpPage (Widget widget) {
-     Navigator.of(context).push(
-       CupertinoPageRoute(builder: (context) => widget)
-     );
+      Navigator.of(context).pushReplacement(
+        CupertinoPageRoute(builder: (context) => widget)
+      );
     }
 
     return Drawer(
@@ -47,7 +49,6 @@ class NavDrawer extends StatelessWidget {
           InkWell(
             child: ListTile(title: Text('Orders'), leading: Icon(Icons.shopping_basket, color: Theme.of(context).primaryColor,)),
             onTap: () {
-
             },
           ),
           InkWell(
@@ -70,6 +71,12 @@ class NavDrawer extends StatelessWidget {
             child: ListTile(title: Text('Question'), leading: Icon(Icons.help, color: Colors.green,)),
             onTap: () {
               
+            },
+          ),
+          InkWell(
+            child: ListTile(title: Text('Map'), leading: Icon(Icons.map, color: Theme.of(context).primaryColor,)),
+            onTap: () {
+                _jumpPage(MapPage());
             },
           ),
           InkWell(

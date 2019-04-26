@@ -40,6 +40,22 @@ android {
         versionName flutterVersionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+    signingConfigs {
+        //调试版的keystore
+        debug {
+            storeFile file("../../debug.keystore")
+            storePassword "123456"
+            keyAlias "debug.keystore"
+            keyPassword "123456"
+        }
+        //发布版的keystore
+        /* release {
+            storeFile file("keystore文件所用位置")
+            storePassword "你规定的密码"
+            keyAlias "在创建该keystore文件时你所写的alias"
+            keyPassword "你规定的密码"
+        } */
+    }
 
     buildTypes {
         release {
