@@ -181,7 +181,7 @@ class _ProductPageState extends State<ProductPage> {
                 padding: const EdgeInsets.fromLTRB(15, 5, 5, 5),
                 child: Text('Product Name', style:TextStyle(color:Colors.grey)),
               ),
-               Padding(
+              Padding(
                 padding: EdgeInsets.all(5),
                 child: Text(widget.productDetailName),
               )

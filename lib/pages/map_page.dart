@@ -6,7 +6,7 @@
  * @Description: 
  * @youWant: add you want info here
  * @Date: 2019-04-25 11:40:53
- * @LastEditTime: 2019-04-26 14:22:34
+ * @LastEditTime: 2019-04-27 10:23:27
  */
 import 'package:flutter/material.dart';
 import 'package:amap_base/amap_base.dart';
@@ -41,9 +41,12 @@ class _MapPageState extends State<MapPage> {
               child: AMapView(
                 onAMapViewCreated: (controller) async {
                   _controller = controller;
-                  await _controller.setMyLocationStyle(MyLocationStyle(
-                    showMyLocation: true
-                  ));
+                  // 展示定位位置
+                  /* await _controller.setMyLocationStyle(MyLocationStyle(
+                    radiusFillColor: Colors.transparent,
+                    locationDotBgColor: Colors.transparent,
+                    strokeColor: Theme.of(context).primaryColor
+                  )); */
                 },
                 amapOptions: AMapOptions(
                   compassEnabled: false,
@@ -63,15 +66,20 @@ class _MapPageState extends State<MapPage> {
                     isOnceLocation: true,
                     locatingWithReGeocode: true,
                   );
-
+                  
                   if (await Permissions().requestPermission()) {
                     await _controller.setZoomLevel(13);
-                    _amapLocation.getLocation(options).then(_result.add).then((_) => setState(() {}));
+                    _amapLocation.getLocation(options).then((Location location) async{
+                      await _controller.addMarker(MarkerOptions(
+                        position: LatLng(location.latitude, location.longitude),
+                        icon: "images/default_marker.png"
+                      ));
+                    });
                   } else {
                     Scaffold.of(context).showSnackBar(SnackBar(content: Text('权限不足')));
                   }
                 },
-                child: Text('定位'),
+                child: Text('点击定位'),
               )
             ],)
           ],
