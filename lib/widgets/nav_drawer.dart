@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shop_app/pages/shopping_cart.dart';
 import 'package:shop_app/pages/login_page.dart';
 import 'package:shop_app/pages/map_page.dart';
+import 'package:shop_app/pages/android_page.dart';
 
 
 class NavDrawer extends StatelessWidget {
@@ -77,6 +78,12 @@ class NavDrawer extends StatelessWidget {
             child: ListTile(title: Text('Map'), leading: Icon(Icons.map, color: Theme.of(context).primaryColor,)),
             onTap: () {
                 _jumpPage(MapPage());
+            },
+          ),
+          InkWell(
+            child: ListTile(title: Text('AndroidView'), leading: Icon(Icons.map, color: Theme.of(context).primaryColor,)),
+            onTap: () {
+                _jumpPage(AndroidPage());
             },
           ),
           InkWell(
