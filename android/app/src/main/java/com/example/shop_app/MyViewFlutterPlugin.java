@@ -1,3 +1,7 @@
+package com.example.shop_app;
+
+import io.flutter.plugin.common.PluginRegistry;
+//import com.example.shop_app.MyViewFactory;
 
 public class MyViewFlutterPlugin {
   public static void registerWith(PluginRegistry registry) {
@@ -7,7 +11,6 @@ public class MyViewFlutterPlugin {
       return;
 
     PluginRegistry.Registrar registrar = registry.registrarFor(key);
-    registrar.platformViewRegistry().registerViewFactory("plugins.views/myview",
-        new MyViewFactory(registrar.messenger()));
+    registrar.platformViewRegistry().registerViewFactory("plugins.views/myView", new MyViewFactory(registrar.messenger()));
   }
 }

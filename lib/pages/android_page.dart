@@ -11,10 +11,10 @@ class AndroidPage extends StatelessWidget {
       body: Container(
         color: Color(0xff0000ff),
         child: SizedBox(
-          width: 200,
+          // width: 200,
           height: 200,
           child: AndroidView(
-            viewType: 'plugins.views/myview',
+            viewType: 'plugins.views/myView',
           ),
         ),
       ),
