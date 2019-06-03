@@ -4,7 +4,7 @@
  * @Version: 
  * @Date: 2019-06-03 09:54:42
  * @LastEditors: etongfu
- * @LastEditTime: 2019-06-03 11:46:27
+ * @LastEditTime: 2019-06-03 11:48:47
  * @Description: 概念音乐页面
  * @youWant: add you want info here
  */
@@ -96,7 +96,7 @@ class _MusicViewState extends State<MusicView> {
                       height: 180,
                       width: 180,
                       child: Padding(
-                        padding: EdgeInsets.all(25),
+                        padding: EdgeInsets.all(15),
                         child: ClipOval(
                             clipper: ImageClipper(),
                             child: Image.asset("images/bg.jpg", fit: BoxFit.cover,),
