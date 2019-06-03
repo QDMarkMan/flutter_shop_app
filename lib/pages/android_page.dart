@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 
 class AndroidPage extends StatelessWidget {
@@ -15,6 +16,12 @@ class AndroidPage extends StatelessWidget {
           height: 200,
           child: AndroidView(
             viewType: 'plugins.views/myView',
+            // 传递给原生组件的参数
+            creationParams: {
+              "myContent": "通过参数传入的文本内容",
+            },
+            //
+            creationParamsCodec: const StandardMessageCodec(),
           ),
         ),
       ),

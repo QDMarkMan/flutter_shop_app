@@ -6,6 +6,8 @@ import 'package:shop_app/pages/shopping_cart.dart';
 import 'package:shop_app/pages/login_page.dart';
 import 'package:shop_app/pages/map_page.dart';
 import 'package:shop_app/pages/android_page.dart';
+import 'package:shop_app/pages/music_view.dart';
+
 
 
 class NavDrawer extends StatelessWidget {
@@ -48,8 +50,9 @@ class NavDrawer extends StatelessWidget {
             },
           ),
           InkWell(
-            child: ListTile(title: Text('Orders'), leading: Icon(Icons.shopping_basket, color: Theme.of(context).primaryColor,)),
+            child: ListTile(title: Text('Music'), leading: Icon(Icons.music_video, color: Theme.of(context).primaryColor,)),
             onTap: () {
+              _jumpPage(MusicView());
             },
           ),
           InkWell(
