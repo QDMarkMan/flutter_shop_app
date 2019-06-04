@@ -10,7 +10,7 @@ class _ShopPageState extends State<ShopPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-       child: Text('Shop_shop'),
+      child: Text('Shop_shop'),
     );
   }
 }

@@ -7,7 +7,8 @@ import 'package:shop_app/pages/login_page.dart';
 import 'package:shop_app/pages/map_page.dart';
 import 'package:shop_app/pages/android_page.dart';
 import 'package:shop_app/pages/music_view.dart';
-
+import 'package:shop_app/pages/animate_page.dart';
+import 'package:shop_app/pages/login_ui2.dart';
 
 
 class NavDrawer extends StatelessWidget {
@@ -17,7 +18,7 @@ class NavDrawer extends StatelessWidget {
 
     // 跳转页面
     void _jumpPage (Widget widget) {
-      Navigator.of(context).pushReplacement(
+      Navigator.of(context).push(
         CupertinoPageRoute(builder: (context) => widget)
       );
     }
@@ -66,15 +67,15 @@ class NavDrawer extends StatelessWidget {
             child: Divider(),
           ),
           InkWell(
-            child: ListTile(title: Text('Setting'), leading: Icon(Icons.settings, color: Colors.blue,)),
+            child: ListTile(title: Text('Animate'), leading: Icon(Icons.android, color: Colors.blue,)),
             onTap: () {
-              
+              _jumpPage(AnimatePage());
             },
           ),
           InkWell(
-            child: ListTile(title: Text('Question'), leading: Icon(Icons.help, color: Colors.green,)),
+            child: ListTile(title: Text('LoginUI2'), leading: Icon(Icons.person, color: Colors.green,)),
             onTap: () {
-              
+              _jumpPage(LoginUI2());
             },
           ),
           InkWell(

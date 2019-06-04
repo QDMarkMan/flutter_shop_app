@@ -28,6 +28,7 @@ dependencies:
   amap_base: ^0.3.5
   fluttery_seekbar: ^0.0.1
   # barcode_scan: ^0.0.4 # 二维码扫描
+  flutter_screenutil: ^0.5.2 # 屏幕适配
 
 
 
@@ -59,6 +60,9 @@ flutter:
   - images/01.png
   - images/02.png
   - images/03.png
+  - images/sun.png
+  - images/logo.png
+
   # 分类图片
   - images/cats/001.png
   - images/cats/002.png
