@@ -4,7 +4,7 @@
  * @Version: 
  * @Date: 2019-06-04 09:11:05
  * @LastEditors: etongfu
- * @LastEditTime: 2019-06-04 10:09:13
+ * @LastEditTime: 2019-06-04 17:34:09
  * @Description: 动画demo
  * @youWant: add you want info here
  */
@@ -35,8 +35,9 @@ class _AnimateHomeState extends State<AnimateHome> with TickerProviderStateMixin
   /// AnimationController在给定的时间段内会线性的生成从0.0到1.0的数字
   AnimationController animationController;
   Animation animation;
+  // 控制color的controller
   Animation animationColor;
-  // 曲线动画
+  // 曲线Controller
   CurvedAnimation curve;
 
   @override
@@ -49,8 +50,9 @@ class _AnimateHomeState extends State<AnimateHome> with TickerProviderStateMixin
       lowerBound: 0,
       upperBound: 60, */
       duration: Duration(milliseconds: 1000),
-      vsync: this
+      vsync: this // 防止屏幕外的动画消耗不必要的资源，  值是一个TickerProvider
     );
+    
     // 监听动画
     /* animationController.addListener(() {
       print('${animationController.value}');
@@ -59,7 +61,7 @@ class _AnimateHomeState extends State<AnimateHome> with TickerProviderStateMixin
         
       });
     }); */
-    // 曲线动画
+    // 曲线动画 Curves中内置了大量的不同的Curves动画， 你也可以自定义动画
     curve = CurvedAnimation(parent: animationController, curve: Curves.bounceInOut);
 
     // 使用Tween 来代替AnimationController中的范围值
@@ -74,7 +76,6 @@ class _AnimateHomeState extends State<AnimateHome> with TickerProviderStateMixin
     ).animate(animationController);
     // 执行动画
     // animationController.forward();
-
     animationController.addStatusListener((AnimationStatus status) {
       print(status);
     });
@@ -123,7 +124,7 @@ class AnimateHeart extends AnimatedWidget {
           // 判断动画状态
           switch (controller.status) {
             case AnimationStatus.completed:
-              // 动画如果完成了那么倒退
+              // 动画如果完成了那么回放动画
               controller.reverse();
               break;
             default:
