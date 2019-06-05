@@ -9,7 +9,7 @@ import 'package:shop_app/pages/android_page.dart';
 import 'package:shop_app/pages/music_view.dart';
 import 'package:shop_app/pages/animate_page.dart';
 import 'package:shop_app/pages/login_ui2.dart';
-
+import 'package:shop_app/pages/card_page.dart';
 
 class NavDrawer extends StatelessWidget {
   @override
@@ -82,6 +82,12 @@ class NavDrawer extends StatelessWidget {
             child: ListTile(title: Text('Map'), leading: Icon(Icons.map, color: Theme.of(context).primaryColor,)),
             onTap: () {
                 _jumpPage(MapPage());
+            },
+          ),
+          InkWell(
+            child: ListTile(title: Text('Card'), leading: Icon(Icons.credit_card, color: Theme.of(context).primaryColor,)),
+            onTap: () {
+                _jumpPage(CardPage());
             },
           ),
           InkWell(

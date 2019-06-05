@@ -83,6 +83,12 @@ flutter:
   - images/products/pro06.jpg
   # 地图相关图片
   - images/default_marker.png
+  # 卡片图片
+  - images/cards/01.png
+  - images/cards/02.png
+  - images/cards/03.png
+  - images/cards/04.png
+
 
   #  - images/a_dot_ham.jpeg
 
