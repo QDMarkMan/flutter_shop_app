@@ -4,7 +4,7 @@
  * @Version: 
  * @Date: 2019-06-04 09:11:05
  * @LastEditors: etongfu
- * @LastEditTime: 2019-06-04 17:34:09
+ * @LastEditTime: 2019-06-11 11:53:15
  * @Description: 动画demo
  * @youWant: add you want info here
  */
@@ -90,14 +90,34 @@ class _AnimateHomeState extends State<AnimateHome> with TickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
-    return Center( 
-      child: AnimateHeart(
-        animations: [
-          animation, 
-          animationColor
-        ],
-        controller: animationController,
-      ),
+    return Stack(
+      children: <Widget>[
+        // 填充全局的定位组件 就相当于
+        // Positioned(
+        //   left: 0,
+        //   top: 0,
+        //   right: 0,
+        //   bottom: 0,
+        //   child: Container(
+        //     color: Colors.black45,
+        //   ),
+        // ),
+        Positioned.fill(
+            child: Container(
+              color: Colors.black12,
+            ),
+          ),
+        //  动画
+        Center( 
+          child: AnimateHeart(
+            animations: [
+              animation, 
+              animationColor
+            ],
+            controller: animationController,
+          ),
+        )
+      ],
     );
   }
 }
