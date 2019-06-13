@@ -62,6 +62,7 @@ flutter:
   - images/03.png
   - images/sun.png
   - images/logo.png
+  - images/nike_logo.jpg
 
   # 分类图片
   - images/cats/001.png
@@ -88,6 +89,9 @@ flutter:
   - images/cards/02.png
   - images/cards/03.png
   - images/cards/04.png
+  # nike 图片
+  - images/nike/shoes.png
+  - images/nike/shoes02.png
 
 
   #  - images/a_dot_ham.jpeg

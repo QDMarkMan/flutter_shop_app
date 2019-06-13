@@ -11,6 +11,8 @@ import 'package:shop_app/pages/animate_page.dart';
 import 'package:shop_app/pages/login_ui2.dart';
 import 'package:shop_app/pages/card_page.dart';
 import 'package:shop_app/pages/shoppingUI/shopping.dart';
+import 'package:shop_app/pages/shoppingCartUI1/shoppint_cart_ui1.dart';
+
 
 class NavDrawer extends StatelessWidget {
   @override
@@ -95,6 +97,12 @@ class NavDrawer extends StatelessWidget {
             child: ListTile(title: Text('ShoppingUI'), leading: Icon(Icons.shop, color: Theme.of(context).primaryColor,)),
             onTap: () {
                 _jumpPage(ShoppintUiPage());
+            },
+          ),
+          InkWell(
+            child: ListTile(title: Text('ShoppingCart1'), leading: Icon(Icons.card_travel, color: Theme.of(context).primaryColor,)),
+            onTap: () {
+                _jumpPage(ShoppingCart1());
             },
           ),
           InkWell(
