@@ -4,7 +4,7 @@
  * @Version: 
  * @Date: 2019-06-14 10:08:09
  * @LastEditors: etongfu
- * @LastEditTime: 2019-06-14 11:57:07
+ * @LastEditTime: 2019-06-17 09:45:57
  * @Description: 引导页数据
  * @youWant: add you want info here
  */
@@ -27,7 +27,7 @@ List<List<Color>> gradients = [
 ];
 
 var pages = [
-  PageModel("images/cats/001.png", "VUE", "THIS IS A VUE GUIDE PAGE", gradients[0]),
+  PageModel("images/cats/004.png", "VUE", "THIS IS A VUE GUIDE PAGE", gradients[0]),
   PageModel("images/cats/002.png", "DATA", "MY DATA PAGE", gradients[1]),
-  PageModel("images/cats/003.png", "IOS", "MY IOS GUIDE PAGE", gradients[2])
+  PageModel("images/cats/006.png", "IOS", "MY IOS GUIDE PAGE", gradients[2])
 ];

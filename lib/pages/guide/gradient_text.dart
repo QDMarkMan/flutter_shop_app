@@ -4,7 +4,7 @@
  * @Version: 
  * @Date: 2019-06-14 10:29:40
  * @LastEditors: etongfu
- * @LastEditTime: 2019-06-14 10:29:59
+ * @LastEditTime: 2019-06-17 09:39:51
  * @Description: 渐变文字
  * @youWant: add you want info here
  */
