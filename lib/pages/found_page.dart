@@ -10,7 +10,7 @@ class _FoundPageState extends State<FoundPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-       child: Text('Shop_Found'),
+      child: Text('Shop_Found'),
     );
   }
 }

@@ -13,6 +13,8 @@ import 'package:shop_app/pages/card_page.dart';
 import 'package:shop_app/pages/shoppingUI/shopping.dart';
 import 'package:shop_app/pages/shoppingCartUI1/shoppint_cart_ui1.dart';
 import 'package:shop_app/pages/guide/guide_page.dart';
+import 'package:shop_app/pages/netflix/netflix_page.dart';
+
 
 
 class NavDrawer extends StatelessWidget {
@@ -110,6 +112,12 @@ class NavDrawer extends StatelessWidget {
             child: ListTile(title: Text('GuidePage'), leading: Icon(Icons.card_giftcard, color: Theme.of(context).primaryColor,)),
             onTap: () {
                 _jumpPage(GuidePage());
+            },
+          ),
+          InkWell(
+            child: ListTile(title: Text('NetFlix'), leading: Icon(Icons.videocam, color: Theme.of(context).primaryColor,)),
+            onTap: () {
+                _jumpPage(NetflixPage());
             },
           ),
           InkWell(

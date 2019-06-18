@@ -10,7 +10,7 @@ class _IndexPageState extends State<IndexPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-       child: Text('Shop_index'),
+      child: Text('Shop_index'),
     );
   }
 }
